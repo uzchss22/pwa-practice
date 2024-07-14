@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Table Creator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <table id="data-table">
+            <tr>
+                <td contenteditable="true"></td>
+            </tr>
+        </table>
+        <button id="add-row">Add Row</button>
+        <button id="add-column">Add Column</button>
+        <div>
+            <h2>Markdown Output</h2>
+            <textarea id="markdown-output" readonly></textarea>
+            <button id="copy-markdown">Copy to Clipboard</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
