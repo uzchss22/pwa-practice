@@ -1,3 +1,4 @@
+// File: /service-worker.js
 const cacheName = 'markdown-table-creator-v1';
 const assetsToCache = [
     '/',
@@ -22,3 +23,4 @@ self.addEventListener('fetch', event => {
             .then(response => response || fetch(event.request))
     );
 });
+
