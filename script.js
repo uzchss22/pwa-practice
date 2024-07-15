@@ -8,6 +8,27 @@ document.getElementById('align-center').addEventListener('click', () => setAlign
 document.getElementById('align-right').addEventListener('click', () => setAlignment('right'));
 
 let alignment = 'left';
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const installButton = document.getElementById('install-button');
+    installButton.style.display = 'block';
+
+    installButton.addEventListener('click', () => {
+        installButton.style.display = 'none';
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the install prompt');
+            } else {
+                console.log('User dismissed the install prompt');
+            }
+            deferredPrompt = null;
+        });
+    });
+});
 
 function addRow() {
     const table = document.getElementById('data-table');
@@ -90,3 +111,4 @@ if ('serviceWorker' in navigator) {
             console.log('Service Worker registration failed:', error);
         });
 }
+
